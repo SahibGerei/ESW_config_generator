@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import FormInput from './components/FormInput';
-import Confirmation from './components/Confirmation';
-import ConfigOutput from './components/ConfigOutput';
+import { useState } from 'react'
+import SwitchForm from './components/SwitchForm'
+import Confirm from './components/Confirm'
+import ConfigResult from './components/ConfigResult'
 
 export default function App() {
-  const [data, setData] = useState({});
-  const [step, setStep] = useState(1);
+  const [form, setForm] = useState(null)
+  const [confirmed, setConfirmed] = useState(false)
 
   return (
-    <div className="container">
-      <h1>Switch Config Generator</h1>
-      {step === 1 && <FormInput setData={setData} next={() => setStep(2)} />}
-      {step === 2 && <Confirmation data={data} back={() => setStep(1)} next={() => setStep(3)} />}
-      {step === 3 && <ConfigOutput data={data} />}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 p-4">
+      <div className="w-full max-w-3xl bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl p-6">
+        {!form && <SwitchForm onSubmit={setForm} />}
+        {form && !confirmed && <Confirm data={form} onBack={() => setForm(null)} onConfirm={() => setConfirmed(true)} />}
+        {form && confirmed && <ConfigResult data={form} onReset={() => { setForm(null); setConfirmed(false) }} />}
+      </div>
     </div>
-  );
+  )
 }
