@@ -9,16 +9,16 @@ export default function SwitchForm({ onSubmit }) {
 <label className="lg-label">Наименнование оборудования</label>
       <input name="sysname" placeholder="Sysname" className="input-glass" />
 <label className="lg-label">Сетевые настройки</label>
-      <input name="vlan" placeholder="VLAN управления ,от 2 до 4094" className="input-glass" />
-      <input name="ip" placeholder="IP-Address, вида 10.10.0.1" className="input-glass" />
-      <input name="mask" placeholder="Subnet Mask, вида 255.255.255.0" className="input-glass" />
-      <input name="gw" placeholder="Gateway, вида 10.10.0.1" className="input-glass" />
+      <input type="number"  inputMode="numeric" pattern="[0-9]*" name="vlan" placeholder="VLAN управления ,от 2 до 4094" className="input-glass" />
+      <input type="number"  inputMode="numeric" pattern="[0-9]*" name="ip" placeholder="IP-Address, вида 10.10.0.1" className="input-glass" />
+      <input type="number"  inputMode="numeric" pattern="[0-9]*" name="mask" placeholder="Subnet Mask, вида 255.255.255.0" className="input-glass" />
+      <input type="number"  inputMode="numeric" pattern="[0-9]*" name="gw" placeholder="Gateway, вида 10.10.0.1" className="input-glass" />
 <label className="lg-label">Настройки порта управления:</label>	 
 	 <select name="portType" className="select-container">
         <option>Ethernet</option>
         <option>GigabitEthernet</option>
        </select>
-	  <input name="port" placeholder="Номер порта, например 1/0/1" className="input-glass" /> 
+	  <input type="number"  inputMode="numeric" pattern="[0-9]*" name="port" placeholder="Номер порта, например 1/0/1" className="input-glass" /> 
 <div className="note">
   <h2>Примечание:</h2>
   <div className="note-line"><span className="vendor">Huawei:</span> 0/0/*</div>
