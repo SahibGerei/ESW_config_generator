@@ -43,13 +43,13 @@ export default function ConfigResult({ data, onReset }) {
         <div className="flex justify-between gap-3 mt-4">
           <button
             onClick={onReset}
-            className="flex-1 py-2 px-4 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold transition"
+            className="flex-1 py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-4"
           >
             На главную
           </button>
           <button
             onClick={handleCopy}
-            className="flex-1 py-2 px-4 rounded-lg bg-green-500 hover:bg-green-600 text-white font-semibold transition"
+            className="flex-1 py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-green-400 via-green-500 to-green-800 p-4"
           >
             {copied ? 'Скопировано!' : 'Скопировать'}
           </button>
