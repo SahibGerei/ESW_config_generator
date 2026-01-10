@@ -18,7 +18,7 @@ export default function SwitchForm({ onSubmit }) {
         <option>Ethernet</option>
         <option>GigabitEthernet</option>
        </select>
-	  <input type="text" inputMode="decimal" pattern="^([0-9]+/){1,2}[0-9]+$" name="port" placeholder="Номер порта, например 1/0/1" className="input-glass" /> 
+	  <input type="text" pattern="^([0-9]+/){1,2}[0-9]+$" name="port" placeholder="Номер порта, например 1/0/1" className="input-glass" /> 
 <div className="note">
   <h2>Примечание:</h2>
   <div className="note-line"><span className="vendor">Huawei:</span> 0/0/*</div>
