@@ -49,3 +49,4 @@ write running-config startup-config
 !
 
 После применения конфигурации доступ к оборудованию Maipu будет под учетной записью config с  паролем superman@Maipu
+`

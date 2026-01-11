@@ -38,3 +38,4 @@ write running-config startup-config
 exit
 
 После применения конфигурации доступ к оборудованию Maipu будет под учетной записью config с  паролем superman.
+`
