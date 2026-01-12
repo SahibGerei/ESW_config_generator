@@ -260,7 +260,7 @@ vlan ${h.vlan}
 ! 
 interface vlan ${h.vlan}
  description OMC
- ip address ${h.ip} ${h.mask}
+ ip address ${h.ip}${h.mask}
 ! 
 interface ge ${h.port}
  description UpLink
