@@ -11,7 +11,7 @@ export default function SwitchForm({ onSubmit }) {
 <label className="lg-label">Сетевые настройки</label>
       <input type="number"  inputMode="numeric" pattern="[0-9]*"  min={2} max={4094} name="vlan" placeholder="VLAN управления ,от 2 до 4094" className="input-glass" />
       <input type="text"  inputMode="decimal" pattern="[0-9.]*" name="ip" placeholder="IP-Address, вида 10.10.0.1" className="input-glass" />
-      <input type="text"   inputMode="decimal" pattern="[0-9.]*" name="mask" placeholder="Subnet Mask, вида 255.255.255.0" className="input-glass" />
+      <input type="text"  name="mask" placeholder="Subnet Mask, вида 255.255.255.0 или /30 для N3COM" className="input-glass" />
       <input type="text"  inputMode="decimal" pattern="[0-9.]*" name="gw" placeholder="Gateway, вида 10.10.0.1" className="input-glass" />
 <label className="lg-label">Настройки порта управления:</label>	 
 	 <select name="portType" className="select-container">
@@ -22,7 +22,7 @@ export default function SwitchForm({ onSubmit }) {
 <div className="note">
   <h2>Примечание:</h2>
   <div className="note-line"><span className="vendor">Huawei:</span> 0/0/*</div>
-  <div className="note-line"><span className="vendor">H3C:</span> 1/0/*</div>
+  <div className="note-line"><span className="vendor">H3C/N3COM:</span> 1/0/*</div>
   <div className="note-line"><span className="vendor">MAIPU IS230:</span> 0/0/*</div>
   <div className="note-line"><span className="vendor">MAIPU S3230:</span> 0/*</div>
   <div className="note-line explanation">* — порядковый номер порта, например 0/0/1</div>

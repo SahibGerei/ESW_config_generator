@@ -5,8 +5,10 @@ export default d => `
 
 ! 
 configure
+!
+hostname ${d.sysname}
 ! 
-username config password cipher superman@N3COM group administrators
+username config password cipher superman@H3C group administrators
 ! 
 ssh server start
 ! 
@@ -15,7 +17,7 @@ vlan ${d.vlan}
 ! 
 interface vlan ${d.vlan}
  description OMC
- ip address ${d.ip}/30
+ ip address ${d.ip} ${d.mask}
 ! 
 interface ge ${d.port}
  description UpLink
@@ -31,9 +33,9 @@ y
 !
 
 После настройки командой "show startup-config" убедиться,что конфигурация сохранилась.
-Не всегда y принимается после save running-config
+Не всегда принимается после save running-config
 
 
-После применения конфигурации доступ к оборудованию  N3COM будет под учетной записью config с  паролем superman@N3COM.
+После применения конфигурации доступ к оборудованию  N3COM будет под учетной записью config с  паролем superman@H3C
 
 `
