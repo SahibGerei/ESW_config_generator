@@ -66,7 +66,7 @@ export default function ConfigResult({ data, onReset }) {
           <option value="">Select vendor</option>
           <option value="Huawei">Huawei</option>
           <option value="H3C">H3C</option>
-		   <option value="N3COM">H3C</option>
+		   <option value="N3COM">N3COM</option>
           <option value="MAIPU_is230">MAIPU_is230</option>
           <option value="MAIPU_s3230">MAIPU_s3230</option>
         </select>
