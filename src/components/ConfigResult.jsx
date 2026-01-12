@@ -3,6 +3,7 @@ import huaweiTemplate from '../configTemplates/huawei.js'
 import h3cTemplate from '../configTemplates/h3c.js'
 import maipu_is230Template from '../configTemplates/maipu_is230.js'
 import maipu_s3230Template from '../configTemplates/maipu_s3230.js'
+import N3COMTemplate from '../configTemplates/N3COM.js'
 
 export default function ConfigResult({ data, onReset }) {
   const [copied, setCopied] = useState(false)
@@ -16,6 +17,7 @@ export default function ConfigResult({ data, onReset }) {
       case 'H3C': template = h3cTemplate(data); break
       case 'MAIPU_is230': template = maipu_is230Template(data); break
       case 'MAIPU_s3230': template = maipu_s3230Template(data); break
+	  case 'N3COM': template = N3COMTemplate(data); break
       default: template = 'No template selected'
     }
   }
@@ -64,6 +66,7 @@ export default function ConfigResult({ data, onReset }) {
           <option value="">Select vendor</option>
           <option value="Huawei">Huawei</option>
           <option value="H3C">H3C</option>
+		   <option value="N3COM">H3C</option>
           <option value="MAIPU_is230">MAIPU_is230</option>
           <option value="MAIPU_s3230">MAIPU_s3230</option>
         </select>

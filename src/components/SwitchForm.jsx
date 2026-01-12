@@ -31,6 +31,7 @@ export default function SwitchForm({ onSubmit }) {
       <select name="switchType" className="select-container">
         <option>Huawei</option>
         <option>H3C</option>
+		<option>N3COM</option>
         <option>MAIPU_is230</option>
         <option>MAIPU_s3230</option>
       </select>
