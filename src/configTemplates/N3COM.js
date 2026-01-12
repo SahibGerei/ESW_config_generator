@@ -17,7 +17,7 @@ vlan ${d.vlan}
 ! 
 interface vlan ${d.vlan}
  description OMC
- ip address ${d.ip} ${d.mask}
+ ip address ${d.ip}${d.mask}
 ! 
 interface ge ${d.port}
  description UpLink
