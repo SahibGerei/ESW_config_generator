@@ -28,49 +28,80 @@ export default function ConfigResult({ data, onReset }) {
       .then(() => setCopied(true))
       .catch(err => alert('Failed to copy: ' + err))
   }
+const handleDownload = () => {
+  const blob = new Blob([template], { type: 'text/plain' })
+  const url = URL.createObjectURL(blob)
 
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white/20 backdrop-blur-md p-8 rounded-2xl shadow-lg w-full max-w-md flex flex-col gap-6">
-        <h2 className="text-2xl font-bold text-white text-center">Конфигурация готова:</h2>
+  const a = document.createElement('a')
+  a.href = url
 
-       
+  // Собираем имя файла
+  const parts = [
+    data.switchType,
+    data.sysname,
+    data.ip,
+    'config'
+  ].filter(Boolean)     // убираем пустые значения
 
-        {/* Блок конфигурации */}
-        <pre className="bg-white/20 backdrop-blur-sm p-4 rounded-xl text-black overflow-x-auto whitespace-pre-wrap">
-          {template}
-        </pre>
+  a.download = parts.join('_') + '.txt'
+  a.click()
 
-        {/* Кнопки */}
-        <div className="flex justify-between gap-3 mt-4">
-          <button
-            onClick={onReset}
-            className="flex-1 py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-4"
-          >
-            На главную
-          </button>
-          <button
-            onClick={handleCopy}
-            className="flex-1 py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-green-400 via-green-500 to-green-800 p-4"
-          >
-            {copied ? 'Скопировано!' : 'Скопировать'}
-          </button>
-		  
-        </div>
-		 {/* Выбор вендора */}
-        <select
-          value={vendor}
-          onChange={(e) => setVendor(e.target.value)}
-          className="w-full bg-white/30 backdrop-blur-sm p-2 rounded-lg text-black font-semibold"
+  URL.revokeObjectURL(url)
+}
+
+
+
+return (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="bg-white/20 backdrop-blur-md p-8 rounded-2xl shadow-lg w-full max-w-md flex flex-col gap-6">
+      <h2 className="text-2xl font-bold text-white text-center">Конфигурация готова:</h2>
+
+      {/* Блок конфигурации */}
+      <pre className="bg-white/20 backdrop-blur-sm p-4 rounded-xl text-black overflow-x-auto whitespace-pre-wrap">
+        {template}
+      </pre>
+
+      {/* Кнопки */}
+      <div className="flex justify-between gap-3 mt-4">
+        <button
+          onClick={onReset}
+          className="flex-1 py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-4"
         >
-          <option value="">Select vendor</option>
-          <option value="Huawei">Huawei</option>
-          <option value="H3C">H3C</option>
-		   <option value="N3COM">N3COM</option>
-          <option value="MAIPU_is230">MAIPU_is230</option>
-          <option value="MAIPU_s3230">MAIPU_s3230</option>
-        </select>
+          На главную
+        </button>
+
+        <button
+          onClick={handleCopy}
+          className="flex-1 py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-green-400 via-green-500 to-green-800 p-4"
+        >
+          {copied ? 'Скопировано!' : 'Скопировать'}
+        </button>
       </div>
+
+      {/* Кнопка скачать */}
+      <button
+        onClick={handleDownload}
+        className="w-full py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-blue-400 via-blue-500 to-blue-800 p-4"
+      >
+        Скачать
+      </button>
+
+      {/* Выбор вендора */}
+      <select
+        value={vendor}
+        onChange={(e) => setVendor(e.target.value)}
+        className="w-full bg-white/30 backdrop-blur-sm p-2 rounded-lg text-black font-semibold"
+      >
+        <option value="">Select vendor</option>
+        <option value="Huawei">Huawei</option>
+        <option value="H3C">H3C</option>
+        <option value="N3COM">N3COM</option>
+        <option value="MAIPU_is230">MAIPU_is230</option>
+        <option value="MAIPU_s3230">MAIPU_s3230</option>
+      </select>
     </div>
-  )
+  </div>
+);
+
+
 }
