@@ -31,25 +31,24 @@ export default function ConfigResult({ data, onReset }) {
 const handleDownload = () => {
   const blob = new Blob([template], { type: 'text/plain' })
   const url = URL.createObjectURL(blob)
-  
-  window.open(url, '_blank')
-  setTimeout(() => URL.revokeObjectURL(url), 5000)
-  
+
+  // Формируем имя файла: SwitchType_Sysname_IP_config.txt
+  const parts = [data.switchType, data.sysname, data.ip, 'config'].filter(Boolean)
+  const fileName = parts.join('_') + '.txt'
+
+  // Создаем ссылку для скачивания
   const a = document.createElement('a')
   a.href = url
+  a.download = fileName
 
-  // Собираем имя файла
-  const parts = [
-    data.switchType,
-    data.sysname,
-    data.ip,
-    'config'
-  ].filter(Boolean)     // убираем пустые значения
-
-  a.download = parts.join('_') + '.txt'
+  // Для обычных браузеров
   a.click()
 
-  URL.revokeObjectURL(url)
+  // Попытка открыть в новой вкладке (для Telegram Web/MiniApp)
+  window.open(url, '_blank')
+
+  // Очищаем объект
+  setTimeout(() => URL.revokeObjectURL(url), 5000)
 }
 
 
