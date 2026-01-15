@@ -28,6 +28,7 @@ export default function ConfigResult({ data, onReset }) {
       .then(() => setCopied(true))
       .catch(err => alert('Failed to copy: ' + err))
   }
+
 const handleDownload = () => {
   const blob = new Blob([template], { type: 'text/plain' })
   const url = URL.createObjectURL(blob)
@@ -81,12 +82,14 @@ return (
       </div>
 
       {/* Кнопка скачать */}
-     <button
+    <!-- 
+	<button
         onClick={handleDownload}
         className="w-full py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-blue-400 via-blue-500 to-blue-800 p-4"
       >
         Скачать (только для WEB-версии)
       </button> 
+	  -->
 
       {/* Выбор вендора */}
       <select
