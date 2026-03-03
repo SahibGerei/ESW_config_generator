@@ -17,14 +17,14 @@ vlan ${d.vlan}
 ! 
 interface vlan ${d.vlan}
  description OMC
- ip address ${d.ip}${d.mask}
+ ip address ${d.ip} ${d.mask}
 ! 
 interface ge ${d.port}
  description UpLink
  port link-type trunk
  port trunk allow-pass vlan ${d.vlan}
 !
-ip route-static 0.0.0.0 0.0.0.0 ${d.gw}
+ip route-static 0.0.0.0 0.0.0.0 ${d.gw}
 !
 end
 !
