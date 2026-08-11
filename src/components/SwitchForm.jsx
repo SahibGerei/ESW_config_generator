@@ -34,6 +34,7 @@ export default function SwitchForm({ onSubmit }) {
 		<option>N3COM</option>
         <option>MAIPU_is230</option>
         <option>MAIPU_s3230</option>
+		<option>ELTEX_MES3300</option>
       </select>
       <button type="submit"  className="flex-1 py-2 px-4 rounded-lg bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white font-semibold transition bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-4" >Generate</button>
     </form>

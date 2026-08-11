@@ -4,6 +4,7 @@ import h3cTemplate from '../configTemplates/h3c.js'
 import maipu_is230Template from '../configTemplates/maipu_is230.js'
 import maipu_s3230Template from '../configTemplates/maipu_s3230.js'
 import N3COMTemplate from '../configTemplates/N3COM.js'
+import ELTEX_MES3300Template from '../configTemplates/ELTEX_MES3300.js'
 
 export default function ConfigResult({ data, onReset }) {
   const [copied, setCopied] = useState(false)
@@ -18,6 +19,7 @@ export default function ConfigResult({ data, onReset }) {
       case 'MAIPU_is230': template = maipu_is230Template(data); break
       case 'MAIPU_s3230': template = maipu_s3230Template(data); break
 	  case 'N3COM': template = N3COMTemplate(data); break
+	  case 'ELTEX_MES3300': template = ELTEX_MES3300Template(data); break
       default: template = 'No template selected'
     }
   }
@@ -103,6 +105,7 @@ return (
         <option value="N3COM">N3COM</option>
         <option value="MAIPU_is230">MAIPU_is230</option>
         <option value="MAIPU_s3230">MAIPU_s3230</option>
+		<option value="ELTEX_MES3300">ELTEX_MES3300</option>
       </select>
     </div>
   </div>

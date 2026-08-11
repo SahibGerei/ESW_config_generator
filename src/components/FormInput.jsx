@@ -37,7 +37,10 @@ export default function FormInput({ setData, next }) {
       <select name="switchType" onChange={handleChange} value={form.switchType}>
         <option>Huawei</option>
         <option>H3C</option>
-        <option>MAIPU</option>
+		<option>N3COM</option>
+        <option>MAIPU_is230</option>
+        <option>MAIPU_s3230</option>
+		<option>ELTEX_MES3300</option>
       </select>
       <button type="submit">Next</button>
     </form>
