@@ -24,12 +24,20 @@ export default function ConfigResult({ data, onReset }) {
     }
   }
 
-  const handleCopy = () => {
-    if (!navigator.clipboard) return alert('Clipboard API not supported')
+ const handleCopy = () => {
+  // Сначала пробуем современный Clipboard API
+  if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(template)
       .then(() => setCopied(true))
-      .catch(err => alert('Failed to copy: ' + err))
+      .catch((err) => {
+        console.warn('Clipboard API failed, trying fallback...', err)
+        fallbackCopy(template) // Если modern API выдал NotAllowedError, включаем запасной вариант
+      })
+  } else {
+    // Если Clipboard API вообще не поддерживается браузером
+    fallbackCopy(template)
   }
+}
 
 const handleDownload = () => {
   const blob = new Blob([template], { type: 'text/plain' })
